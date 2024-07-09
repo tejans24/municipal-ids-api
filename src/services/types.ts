@@ -34,14 +34,14 @@ export class User {
     phone,
     address,
     proofsOfId,
-    email
+    email,
   }: {
-    firstName: string,
-    lastName: string,
-    phone: string,
-    address: Address,
-    proofsOfId: ProofOfId[],
-    email?: string
+    firstName: string;
+    lastName: string;
+    phone: string;
+    address: Address;
+    proofsOfId: ProofOfId[];
+    email?: string;
   }) {
     this.id = this.generateLibraryCardID();
     this.services = [];
@@ -51,11 +51,12 @@ export class User {
     this.address = address;
     this.proofsOfId = proofsOfId || [];
     this.email = email;
-    this.residencyVerificationStatus = RESIDENCY_VERIFICATION_STATUS.NOT_VERIFIED
+    this.residencyVerificationStatus =
+      RESIDENCY_VERIFICATION_STATUS.NOT_VERIFIED;
   }
 
   private generateLibraryCardID(): string {
-    let result = '';
+    let result = "";
     for (let i = 0; i < 12; i++) {
       result += Math.floor(Math.random() * 10).toString();
     }
@@ -68,18 +69,24 @@ export class User {
 
   updateResidencyVerificationStatus(
     status: RESIDENCY_VERIFICATION_STATUS,
-    rejectionReason?: string
+    rejectionReason?: string,
   ): void {
     this.residencyVerificationStatus = status;
     this.residencyVerificationRejectionReason = rejectionReason;
   }
 
   isVerifiedCityResident(): boolean {
-    return this.residencyVerificationStatus === RESIDENCY_VERIFICATION_STATUS.CITY_RESIDENCY_VERIFIED;
+    return (
+      this.residencyVerificationStatus ===
+      RESIDENCY_VERIFICATION_STATUS.CITY_RESIDENCY_VERIFIED
+    );
   }
 
   isVerifiedStateResident(): boolean {
-    return this.residencyVerificationStatus === RESIDENCY_VERIFICATION_STATUS.STATE_RESIDENCY_VERIFIED;
+    return (
+      this.residencyVerificationStatus ===
+      RESIDENCY_VERIFICATION_STATUS.STATE_RESIDENCY_VERIFIED
+    );
   }
 }
 
@@ -104,6 +111,13 @@ export type UpdateUser = {
 export type ProofOfId = {
   type: PROOF_OF_ID_TYPE;
   url: string;
+};
+
+export type VerifyUserResponse = {
+  id: string;
+  fullName: string;
+  residencyVerificationStatus: RESIDENCY_VERIFICATION_STATUS;
+  services: UserSubscribedService[];
 };
 
 export enum PROOF_OF_ID_TYPE {

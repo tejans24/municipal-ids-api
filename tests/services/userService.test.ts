@@ -1,5 +1,5 @@
-import { UserService } from "../src/services/userService";
-import { PROOF_OF_ID_TYPE, User } from "../src/services/types";
+import { UserService } from "../../src/services/userService";
+import { PROOF_OF_ID_TYPE, User } from "../../src/services/types";
 
 describe("UserService", () => {
   let userService: UserService;
