@@ -6,6 +6,9 @@
 
 This module provides an API for registering users, retrieving user details, and verifying user information. It utilizes the `MunicipalIDService` to manage user data and residency verification.
 
+This is a very basic version of the API, it can be enhanced to support more integration and permissions functionality
+to support more complex use cases for the Municipal IDs.
+
 ## Functions
 
 ### `registerUser(requestUser: User): Promise<RegisterUserResponse | { error: string }>`
