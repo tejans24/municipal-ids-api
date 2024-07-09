@@ -1,4 +1,9 @@
-import { registerUser, RegisterUserResponse, getUser } from "../src/api";
+import {
+  registerUser,
+  RegisterUserResponse,
+  getUser,
+  verifyUser,
+} from "../src/api";
 import { MunicipalIDService } from "../src/services/municipalIDService";
 import { UserService } from "../src/services/userService";
 import { PROOF_OF_ID_TYPE, User } from "../src/services/types";
@@ -87,6 +92,38 @@ describe("registerUser", () => {
         });
 
       const response = await getUser(user.id);
+      expect(response).toEqual({
+        error: "Internal server error",
+      });
+    });
+  });
+
+  describe("verifyUser", () => {
+    test("should verify user successfully", async () => {
+      const response = await verifyUser(user.id);
+      expect(response).toEqual({
+        id: user.id,
+        fullName: user.fullName(),
+        residencyVerificationStatus: user.residencyVerificationStatus,
+        services: user.services,
+      });
+    });
+
+    test("should return error if user is not found", async () => {
+      const response = await verifyUser("nonexistent");
+      expect(response).toEqual({
+        error: "User not found",
+      });
+    });
+
+    test("should handle errors during user verification", async () => {
+      jest
+        .spyOn(MunicipalIDService.prototype, "verifyUser")
+        .mockImplementation(() => {
+          throw new Error("Internal server error");
+        });
+
+      const response = await verifyUser(user.id);
       expect(response).toEqual({
         error: "Internal server error",
       });

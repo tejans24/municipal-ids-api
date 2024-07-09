@@ -1,7 +1,11 @@
+/**
+ * This file contains the implementation of the MunicipalIDService class,
+ * which is responsible for issuing municipal IDs to users based on residency verification.
+ */
+
 import {
   RESIDENCY_VERIFICATION_STATUS,
   User,
-  UserSubscribedService,
   VerifyUserResponse,
 } from "./types";
 import { VerificationService } from "./verificationService";

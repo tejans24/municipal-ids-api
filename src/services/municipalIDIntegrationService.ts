@@ -1,3 +1,7 @@
+/**
+ * This file contains the MunicipalIDIntegrationService class which handles integration with city services.
+ */
+
 import {
   SUPPORTED_CITY_SERVICES,
   RESIDENCY_VERIFICATION_STATUS,
@@ -20,7 +24,7 @@ export class MunicipalIDIntegrationService {
   }
 
   public async connectCityResidentDefaultServices(
-    userId: string
+    userId: string,
   ): Promise<SUPPORTED_CITY_SERVICES[]> {
     if (this.userService.getUserById(userId)?.isVerifiedCityResident()) {
       return this.connectServices(userId, this.DEFAULT_CITY_SERVICES);
@@ -30,9 +34,8 @@ export class MunicipalIDIntegrationService {
   }
 
   public async connectOnlyLibraryService(
-    userId: string
+    userId: string,
   ): Promise<SUPPORTED_CITY_SERVICES[]> {
-
     if (this.userService.getUserById(userId)?.isVerifiedStateResident()) {
       return this.connectServices(userId, [SUPPORTED_CITY_SERVICES.LIBRARY]);
     } else {
@@ -42,7 +45,7 @@ export class MunicipalIDIntegrationService {
 
   public async connectServices(
     userId: string,
-    services: SUPPORTED_CITY_SERVICES[]
+    services: SUPPORTED_CITY_SERVICES[],
   ): Promise<SUPPORTED_CITY_SERVICES[]> {
     const user = this.userService.getUserById(userId);
     let addedServices: UserSubscribedService[] = [];
@@ -72,7 +75,7 @@ export class MunicipalIDIntegrationService {
   // TODO: This can be more permission level based check
   private isEligibleForService(
     user: User,
-    service: SUPPORTED_CITY_SERVICES
+    service: SUPPORTED_CITY_SERVICES,
   ): boolean {
     return (
       user.residencyVerificationStatus ===
