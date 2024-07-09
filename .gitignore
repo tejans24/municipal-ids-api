@@ -1,0 +1,68 @@
+# Ignore node_modules directory
+node_modules/
+
+# Ignore build output directories
+dist/
+build/
+out/
+
+# Ignore TypeScript compiled JavaScript files
+*.js
+*.js.map
+
+# Ignore TypeScript declaration files
+*.d.ts
+
+# Ignore environment variable files
+.env
+.env.local
+.env.*.local
+
+# Ignore log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Ignore IDE-specific files
+.vscode/
+.idea/
+*.swp
+
+# Ignore dependency directories
+jspm_packages/
+bower_components/
+
+# Ignore optional lock files
+package-lock.json
+yarn.lock
+
+# Ignore coverage directories used by testing tools
+coverage/
+
+# Ignore temporary files
+*.tmp
+*.temp
+*.cache
+
+# Ignore build and production output
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Ignore system files
+.DS_Store
+Thumbs.db
+
+# Ignore TypeScript cache
+*.tsbuildinfo
+
+# Ignore temporary files created by editors or operating systems
+*.bak
+*.orig
+
+# Ignore local AWS credentials (if applicable)
+.aws/
+
+
+# Ignore macOS specific files
+*.DS_Store
