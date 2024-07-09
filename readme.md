@@ -1,3 +1,5 @@
+![API Tests](https://github.com/tejans24/municipal-ids-api/actions/workflows/ci.yml/badge.svg)
+
 # API Documentation
 
 This module provides an API for registering users, retrieving user details, and verifying user information. It utilizes the `MunicipalIDService` to manage user data and residency verification.
@@ -94,3 +96,31 @@ REJECTED = "REJECTED",
 }
 
 Represents the possible residency verification statuses for a user.
+
+# GitHub Actions
+
+name: Run Tests
+
+on:
+push:
+branches: [ main ]
+pull_request:
+branches: [ main ]
+
+jobs:
+
+build:
+runs-on: ubuntu-latest
+
+strategy:
+matrix:
+node-version: [16.x]
+
+steps:
+
+- uses: actions/checkout@v3
+- name: Use Node.js ${{ matrix.node-version }}
+  with:
+  node-version: ${{ matrix.node-version }}
+- run: npm ci
+- run: npm test
