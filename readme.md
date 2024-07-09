@@ -1,5 +1,7 @@
 ![API Tests](https://github.com/tejans24/municipal-ids-api/actions/workflows/ci.yml/badge.svg)
 
+[Unit and Integration Test CI Actions Here](https://github.com/tejans24/municipal-ids-api/actions)
+
 # API Documentation
 
 This module provides an API for registering users, retrieving user details, and verifying user information. It utilizes the `MunicipalIDService` to manage user data and residency verification.
