@@ -1,14 +1,7 @@
 import { registerUser, RegisterUserResponse } from "../src/users";
 import { MunicipalIDService } from "../src/services/municipalIDService";
 import { UserService } from "../src/services/userService";
-import {
-  PROOF_OF_ID_TYPE,
-  RESIDENCY_VERIFICATION_STATUS,
-  User,
-} from "../src/services/types";
-
-// jest.mock("../src/services/municipalIDService");
-// jest.mock("../src/services/userService");
+import { PROOF_OF_ID_TYPE, User } from "../src/services/types";
 
 describe("registerUser", () => {
   // let municipalIDService: MunicipalIDService;
@@ -62,10 +55,10 @@ describe("registerUser", () => {
 
   test("should handle errors during user registration", async () => {
     jest
-    .spyOn(MunicipalIDService.prototype, "issueMunicipalId")
-    .mockImplementation(() => {
-      throw new Error("User does not meet the criteria for a Municipal ID");
-    });
+      .spyOn(MunicipalIDService.prototype, "issueMunicipalId")
+      .mockImplementation(() => {
+        throw new Error("User does not meet the criteria for a Municipal ID");
+      });
 
     const response = await registerUser(user);
 

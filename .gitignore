@@ -7,7 +7,7 @@ build/
 out/
 
 # Ignore TypeScript compiled JavaScript files
-*.js
+/*/*.js
 *.js.map
 
 # Ignore TypeScript declaration files
@@ -31,10 +31,6 @@ yarn-error.log*
 # Ignore dependency directories
 jspm_packages/
 bower_components/
-
-# Ignore optional lock files
-package-lock.json
-yarn.lock
 
 # Ignore coverage directories used by testing tools
 coverage/
